@@ -17,29 +17,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/upload', function () {
-    
-    return view('regist_content');
-});
+Route::get('/upload', 'UploadController@index');
 
-Route::post('/upload', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'title' => 'required|max:255',
-        'movie' => 'mimetypes:video/mp4',
-        ]);
-
-    if ($validator->fails()){
-        return redirect('/upload')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $path = $request->file('movie')->store('movies');
-    
-    $uploadContent = new \App\UploadContent;
-    $uploadContent->title = $request->title;
-    $uploadContent->description = $request->description;
-    $uploadContent->path = $path;
-    $uploadContent->save();
-    return redirect('/');
-});
+Route::post('/upload', 'UploadController@upload');
