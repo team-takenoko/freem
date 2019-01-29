@@ -17,6 +17,7 @@ class CreateUploadContentsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description');
+            $table->string('path');
             $table->timestamps();
         });
     }

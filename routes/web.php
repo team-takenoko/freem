@@ -25,7 +25,8 @@ Route::get('/upload', function () {
 Route::post('/upload', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'title' => 'required|max:255',
-            ]);
+        'movie' => 'mimetypes:video/mp4',
+        ]);
 
     if ($validator->fails()){
         return redirect('/upload')
@@ -33,9 +34,12 @@ Route::post('/upload', function (Request $request) {
             ->withErrors($validator);
     }
 
-    $uplocatContent = new \App\UploadContent;
-    $uplocatContent->title = $request->title;
-    $uplocatContent->description = $request->description;
-    $uplocatContent->save();
+    $path = $request->file('movie')->store('movies');
+    
+    $uploadContent = new \App\UploadContent;
+    $uploadContent->title = $request->title;
+    $uploadContent->description = $request->description;
+    $uploadContent->path = $path;
+    $uploadContent->save();
     return redirect('/');
 });
