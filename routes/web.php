@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,25 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('upload', function () {
+Route::get('/upload', function () {
+    
     return view('regist_content');
+});
+
+Route::post('/upload', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'title' => 'required|max:255',
+            ]);
+
+    if ($validator->fails()){
+        return redirect('/upload')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $uplocatContent = new \App\UploadContent;
+    $uplocatContent->title = $request->title;
+    $uplocatContent->description = $request->description;
+    $uplocatContent->save();
+    return redirect('/');
 });

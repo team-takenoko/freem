@@ -21,10 +21,11 @@
 
         <main class="flex-shrink-0" role="main">
             <div class="container" style="padding: 60px 15px 0px 15px;">
-                <form class="form-inline col-12">
+                <form action="/upload" method="POST" class="form-inline col-12">
+                    {{ csrf_field() }}
                     <div class="form-group mx-auto">
-                        <input type="text" class="form-control col-12" id="title" placeholder="Title">
-                        <input type="text" class="form-control col-12" id="description" placeholder="Description">
+                        <input type="text" class="form-control col-12" name="title" id="upload-content-title" placeholder="Title">
+                        <input type="text" class="form-control col-12" name="description" id="upload-content-description" placeholder="Description">
                         <button type="submit" class="btn btn-dark col-12">Registration</button>
                     </div>
                 </form>
