@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'index@index');
 
 Route::get('/upload', 'UploadController@index')->name('upload');
 

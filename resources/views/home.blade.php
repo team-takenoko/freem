@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card-deck">
+    <div class="row">
         @if (count($contents) > 0)
             @foreach ($contents as $content)
                 <div class="card col-2 my-1">
