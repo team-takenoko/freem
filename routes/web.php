@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/upload', 'UploadController@index');
+Route::get('/upload', 'UploadController@index')->name('upload');
 
-Route::post('/upload', 'UploadController@upload');
+Route::post('/upload', 'UploadController@upload')->name('upload');
 
 Auth::routes();
 

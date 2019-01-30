@@ -32,15 +32,15 @@ class UploadController extends Controller
         }
     
         $user = Auth::user();
-        $path = $request->file('movie')->store('movies');
+        $path = $request->file('movie')->store('public/movies');
         
         $uploadContent = new \App\UploadContent;
         $uploadContent->title = $request->title;
         $uploadContent->description = $request->description;
-        $uploadContent->path = $path;
+        $uploadContent->path = pathinfo($path, PATHINFO_BASENAME);
         $uploadContent->user_id = $user->id;
         $uploadContent->save();
-        return redirect('/');
+        return redirect('/home');
     }
 
 }
