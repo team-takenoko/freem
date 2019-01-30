@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,14 @@ class UploadController extends Controller
                 ->withErrors($validator);
         }
     
+        $user = Auth::user();
         $path = $request->file('movie')->store('movies');
         
         $uploadContent = new \App\UploadContent;
         $uploadContent->title = $request->title;
         $uploadContent->description = $request->description;
         $uploadContent->path = $path;
+        $uploadContent->user_id = $user->id;
         $uploadContent->save();
         return redirect('/');
     }
