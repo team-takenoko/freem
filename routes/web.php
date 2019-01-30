@@ -24,3 +24,5 @@ Route::post('/upload', 'UploadController@upload');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/watch/{movie}', 'WatchController@index');
