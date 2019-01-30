@@ -6,7 +6,7 @@
         @if (count($contents) > 0)
             @foreach ($contents as $content)
                 <div class="card col-2 my-1">
-                    <a href="#">
+                    <a href="/watch/{{$content->path}}">
                         <img class="card-img-top" src="{{ asset('img/sample.png') }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ $content->title }}</h5>

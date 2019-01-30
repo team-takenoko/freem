@@ -26,6 +26,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $contents = \App\UploadContent::where('user_id', $user->id)->get();
+        foreach($contents as $content){
+            $content->path = pathinfo($content->path, PATHINFO_FILENAME);
+        }
             
         return view('/home', ['contents' => $contents]);
     }
