@@ -37,10 +37,12 @@
                     </ul>
 
                     <ul class="navbar-nav d-flex justify-content-center">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Search</button>
-                        </div>
+                        <form class="form-inline" action="{{ route('result') }}" method="GET">
+                            <input type="text" class="form-control" placeholder="Search" name="search_word" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                            </div>
+                        </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
