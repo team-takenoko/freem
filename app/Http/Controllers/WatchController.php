@@ -9,8 +9,8 @@ class WatchController extends Controller
 {
     public function index(Request $request)
     {
-        $moviePath = \App\UploadContent::where('path', 'like', "%".$request->movie."%")->first();
-        $content = "/storage/movies/" . $moviePath->path;
+        $content = \App\UploadContent::where('path', 'like', "%".$request->movie."%")->first();
+        $content->path = "/storage/movies/" . $content->path;
 
         return view("/watch", ["content" => $content]);
     }

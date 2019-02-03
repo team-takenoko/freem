@@ -6,8 +6,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <video controls autoplay>
-            <source src="{{asset( $content )}}">
+            <source src="{{asset( $content->path )}}">
         </video> 
     </div>
+    <div class="border-bottom">
+        <h2>{{$content->title}}</h2>
+    </div>
+    <p>{{$content->description}}</p>
 </div>
 @endsection
