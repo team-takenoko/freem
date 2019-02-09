@@ -11,6 +11,9 @@
     </div>
     <div class="border-bottom">
         <h2>{{$content->title}}</h2>
+        <button type="button" class="btn btn-light">
+            Good! <span class="badge badge-light">0</span>
+        </button>
     </div>
     <p>{{$content->description}}</p>
 </div>
