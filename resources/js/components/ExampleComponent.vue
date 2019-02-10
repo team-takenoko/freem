@@ -1,23 +1,31 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <button @click="onClick" class="btn btn-light">
+        Good! <span class="badge badge-light">{{good}}</span>
+    </button>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        props: ['goodNum'],
+        data: function() {
+            return {
+                good: this.goodNum,
+            }
+        },
+        methods: {
+            onClick: function(){
+                var url = location.pathname;
+                var self = this;
+                axios.post(url, this.request).then(res => {
+                    if(res.data.result){
+                        self.good++;
+                        console.log('OK');
+                    }
+                    else{
+                        console.log('NG');
+                    }
+                });
+            }
         }
-    }
+   }
 </script>
