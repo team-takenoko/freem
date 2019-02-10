@@ -24,5 +24,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/watch/{movie}', 'WatchController@index');
+Route::post('/watch/{movie}', 'WatchController@good');
 
-Route::get('result/{search_ward?}', 'ResultController@index')->name('result');
+Route::get('/result/{search_ward?}', 'ResultController@index')->name('result');

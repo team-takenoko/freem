@@ -11,7 +11,11 @@
     </div>
     <div class="border-bottom">
         <h2>{{$content->title}}</h2>
+        <div id="app">
+            <example-component good-num="{{$good}}"></example-component>
+        </div>
     </div>
     <p>{{$content->description}}</p>
 </div>
+
 @endsection
